@@ -1,31 +1,17 @@
-#container {
-  text-align: center;
+// .bg-image {
+//     background: url('/assets/images/home.jpg') no-repeat center center fixed;
+//     background-size: cover;
+//   }
+//   .no-scroll .scroll-content {
+//     overflow: hidden;
+//   }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-ion-content ion-toolbar {
-  --background: translucent;
-}
+.bg-image{
+    // background: url(./assets/images/home.jpg) no-repeat center center fixed;
+    background: url(/assets/images/home.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    // background-repeat: no-repeat;
+    // background-size: cover;  
+    }
