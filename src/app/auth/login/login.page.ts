@@ -7,10 +7,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private formGroup : FormGroup;
-  
+  private form: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {
-    this.formGroup = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
@@ -19,8 +19,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  logForm(){
-    console.log(this.formGroup.value)
+  loginForm() {
+    console.log(this.form.value);
   }
 
 }

@@ -1,5 +1,8 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { regexValidators } from '../../validators/validators';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -7,12 +10,19 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  private form : FormGroup;
-  
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+  public signupForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, public loadingController: LoadingController) {
+    this.signupForm = this.formBuilder.group({
+      email: ['', Validators.compose([
+        Validators.pattern(regexValidators.email),
+        Validators.required
+      ])
+    ],
+      password: ['', Validators.compose([
+        Validators.pattern(regexValidators.password),
+        Validators.required
+      ])],
       name: ['', Validators.required],
       age: ['', Validators.required]
     });
@@ -21,8 +31,10 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
 
-  logForm(){
-    console.log(this.form.value)
+
+  signUp() {
+    console.log(this.signupForm.value);
+    this.authService.userSignup(this.signupForm.value).subscribe();
   }
 
 

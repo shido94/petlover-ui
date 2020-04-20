@@ -18,27 +18,50 @@
               <ion-card-title><b>Signup</b></ion-card-title>
             </ion-card-header>
 
-            <form [formGroup]="form" class="form-container" (ngSubmit)="logForm()">
+            <form [formGroup]="signupForm" class="form-container" (ngSubmit)="signUp()">
               <ion-list lines="full" class="ion-no-margin ion-no-padding">
               </ion-list>
               <ion-item>
                 <ion-label position="floating">Email</ion-label>
                 <ion-input type="email" formControlName="email"></ion-input>
               </ion-item>
+              <div *ngIf="!signupForm.controls.email.valid &&
+                          signupForm.controls.email.dirty"
+                         class="validator-error">
+                      Please enter a valid email.
+              </div>
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type="password" formControlName="password"></ion-input>
               </ion-item>
+
+              <div *ngIf="!signupForm.controls.password.valid &&
+                      signupForm.controls.password.dirty"
+                      class="validator-error">
+                      Passwords should be at least 8 characters long and contain one number,
+                      one character and one special character.
+              </div>
+
               <ion-item>
                 <ion-label position="floating">Name</ion-label>
                 <ion-input type="text" formControlName="name"></ion-input>
               </ion-item>
+              <div *ngIf="!signupForm.controls.name.valid &&
+                    signupForm.controls.name.dirty"
+                    class="validator-error">
+                  This field is empty.
+              </div>
               <ion-item>
                 <ion-label position="floating">Age</ion-label>
                 <ion-input type="number" formControlName="age"></ion-input>
               </ion-item>
+              <div *ngIf="!signupForm.controls.age.valid &&
+                  signupForm.controls.age.dirty"
+                  class="validator-error">
+                This field is empty.
+            </div>
               <div class="ion-padding">
-                <ion-button expand="block" [disabled]="!form.valid" type="submit" class="ion-no-margin">Signup</ion-button>
+                <ion-button expand="block" type="submit" [disabled]="!signupForm.valid" class="ion-no-margin">Signup</ion-button>
               </div>
             </form>
             <ion-card-content>
